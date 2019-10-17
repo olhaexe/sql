@@ -1,0 +1,101 @@
+DROP DATABASE IF EXISTS AirBnB;
+CREATE DATABASE AirBnB;
+USE AirBnB;
+
+DROP TABLE IF EXISTS owners;
+CREATE TABLE owners (
+	id SERIAL PRIMARY KEY,
+	firstname VARCHAR (50),
+	lastname VARCHAR (100),
+	email VARCHAR (120) UNIQUE,
+	phone BIGINT,
+	created_at DATETIME DEFAULT NOW(),
+	INDEX owners_phone_idx (phone),
+	INDEX owners_firstname_lastname (firstname, lastname)
+);
+
+DROP TABLE IF EXISTS guests;
+CREATE TABLE guests (
+	id SERIAL PRIMARY KEY,
+	firstname VARCHAR (50),
+	lastname VARCHAR (100),
+	email VARCHAR (120) UNIQUE,
+	phone BIGINT,
+	created_at DATETIME DEFAULT NOW(),
+	INDEX guests_phone_idx (phone),
+	INDEX guests_firstname_lastname (firstname, lastname)
+);
+
+
+DROP TABLE IF EXISTS flat_types;
+CREATE TABLE flat_types (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (255)
+);
+
+INSERT INTO flat_types VALUES
+	(1, 'Квартира целиком'),
+	(2, 'Отдельная комната'),
+	(3, 'Гостиничный номер'),
+	(4, 'Загородное жилье'),
+	(5, 'Другое');
+
+DROP TABLE IF EXISTS cities;
+CREATE TABLE cities (
+
+
+DROP TABLE IF EXISTS flats;
+CREATE TABLE flats (
+	id SERIAL PRIMARY KEY,
+	flat_type_id BIGINT UNSIGNED NOT NULL,
+	owner_id BIGINT UNSIGNED NOT NULL,
+	location_id BIGINT UNSIGNED NOT NULL,
+	flatname VARCHAR (255),
+	decription TEXT,
+	max_guests INT,
+	status ENUM ('registred', 'approved', 'deleted'),
+	advantages SET ('Wi-Fi', 'Бесплатная парковка', 'Круглосуточный доступ', 'Отопление', 'Кухня', 'Кондиционер', 
+	'Стиральная машина', 'Фен', 'Телевизор', 'Предметы первой необходимости'), -- удобства
+	created_at DATETIME DEFAULT NOW(),
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	INDEX (owner_id),
+	INDEX (flat_type_id),
+	INDEX (location_id),
+	FOREIGN KEY (owner_id) REFERENCES owners(id),
+	FOREIGN KEY (flat_type_id) REFERENCES flat_types(id),
+	FOREIGN KEY (location_id) REFERENCES cities(city_id)
+);
+
+DROP TABLE IF EXISTS photo;
+CREATE TABLE photo (
+	id SERIAL PRIMARY KEY,
+	flat_id BIGINT UNSIGNED NOT NULL,
+	filename VARCHAR (255),
+	metadata JSON,
+	FOREIGN KEY (flat_id) REFERENCES flats (id)
+);
+
+DROP TABLE IF EXISTS messages; -- связаться с хозяином
+CREATE TABLE messages (
+	id SERIAL PRIMARY KEY,
+	initiator_guest_id BIGINT UNSIGNED NOT NULL,
+    target_owner_id BIGINT UNSIGNED NOT NULL,
+    body TEXT,
+    created_at DATETIME DEFAULT NOW(),
+    INDEX messages_initiator_guest_id (initiator_guest_id),
+    INDEX messages_target_owner_id (target_owner_id),
+    FOREIGN KEY (initiator_guest_id) REFERENCES guests(id),
+    FOREIGN KEY (target_owner_id) REFERENCES owners(id)
+);
+
+DROP TABLE IF EXISTS flat_references; -- отзывы от гостей
+CREATE TABLE flat_referencs (
+	id SERIAL PRIMARY KEY,
+	from_guest_id BIGINT UNSIGNED NOT NULL,
+	flat_id BIGINT UNSIGNED NOT NULL,
+	mark ENUM ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'),
+	body TEXT,
+	created_at DATETIME DEFAULT NOW(),
+	FOREIGN KEY (from_guest_id) REFERENCES guests(id),
+	FOREIGN KEY (flat_id) REFERENCES flats(id)
+);
