@@ -1,0 +1,38 @@
+-- Создайте таблицу logs типа Archive. Пусть при каждом создании записи в таблицах users, catalogs и products 
+-- в таблицу logs помещается время и дата создания записи, название таблицы, идентификатор первичного ключа и 
+-- содержимое поля name.
+DROP TABLE IF EXISTS logs;
+CREATE TABLE logs (
+	id SERIAL AUTO_INCREMENT,
+	table_name VARCHAR(50) COMMENT "Название таблицы (users, catalogs или products)",
+	updated_at DATETIME,
+	table_id INT,
+	string_name VARCHAR(255)
+) ENGINE=Archive;
+
+DELIMITER //
+CREATE TRIGGER users_upd AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+	INSERT INTO logs (table_name, updated_at, table_id, string_name)
+		(SELECT 'users', updated_at, id, name FROM users WHERE id=(SELECT MAX(id) FROM users));
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER catalogs_upd AFTER INSERT ON catalogs
+FOR EACH ROW
+BEGIN
+	INSERT INTO logs (table_name, updated_at, table_id, string_name)
+		(SELECT 'catalogs', updated_at, id, name FROM catalogs WHERE id=(SELECT MAX(id) FROM catalogs));
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER products_upd AFTER INSERT ON products
+FOR EACH ROW
+BEGIN
+	INSERT INTO logs (table_name, updated_at, table_id, string_name)
+		(SELECT 'products', updated_at, id, name FROM products WHERE id=(SELECT MAX(id) FROM products));
+END //
+DELIMITER ;
