@@ -655,6 +655,9 @@ SELECT f.id, f.flatname,
 	ORDER BY visits DESC
 	LIMIT 1;
 
+-- найти все брони, по которым есть оплаты
+SELECT r.id, r.guest_id, r.flat_id, r.status, p.money_for_flat, p.transferring_status 
+	FROM reservations r JOIN payments p ON p.reservation_id=r.id;
 
 
 DELIMITER //
