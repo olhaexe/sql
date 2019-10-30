@@ -1,3 +1,6 @@
+-- База данных по сайту AirBNB - площадка для бронирования жилья
+-- Хранит данные пользователей (гостей и хозяев жилья), параметры жилых помещений, информацию о бронированиях и платежах.
+
 DROP DATABASE IF EXISTS AirBnB;
 CREATE DATABASE AirBnB;
 USE AirBnB;
@@ -14,6 +17,37 @@ CREATE TABLE owners (
 	INDEX owners_firstname_lastname (firstname, lastname)
 );
 
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('1', 'Jeffery', 'Lowe', 'noemie38@example.org', '9803133328');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('2', 'Cesar', 'Schmitt', 'johnathan.waelchi@example.org', '9330339588');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('3', 'Letha', 'Beatty', 'reynold.feil@example.net', '9636262160');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('4', 'Benton', 'Rogahn', 'jbeer@example.net', '9490216855');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('5', 'Braden', 'Shields', 'zemlak.foster@example.com', '9114981748');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('6', 'Luther', 'Turcotte', 'zturner@example.com', '9292137540');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('7', 'Patricia', 'Gleason', 'benny76@example.net', '9148879590');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('8', 'Delta', 'Kerluke', 'terry.antone@example.org', '9667864529');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('9', 'Thurman', 'Rutherford', 'isaiah.gerlach@example.net', '9994148720');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('10', 'Willie', 'Fritsch', 'rolando45@example.org', '9512440690');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('11', 'Letitia', 'Marks', 'bosco.sage@example.net', '9546163253');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('12', 'Ada', 'Kuvalis', 'emmanuelle.hegmann@example.org', '9251017068');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('13', 'Josie', 'Kunde', 'kaley.rolfson@example.net', '9285157694');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('14', 'Harmony', 'Lesch', 'velda32@example.org', '9627960545');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('15', 'Kelsie', 'Olson', 'xheidenreich@example.net', '9548492646');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('16', 'Lucile', 'Rolfson', 'dbartell@example.net', '9258387168');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('17', 'Celestino', 'Cruickshank', 'flavio.hammes@example.com', '9686686728');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('18', 'Hayley', 'Vandervort', 'cartwright.seamus@example.com', '9228109837');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('19', 'Royal', 'DuBuque', 'jswift@example.org', '9295312277');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('20', 'Adrian', 'Mills', 'gail.lockman@example.net', '9491584055');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('21', 'Roosevelt', 'Tromp', 'gutkowski.janiya@example.com', '9910853104');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('22', 'Miguel', 'Watsica', 'hassan.kuphal@example.org', '9824696112');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('23', 'Gregory', 'Jenkins', 'weimann.richard@example.com', '9860971258');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('24', 'Kristina', 'Jast', 'jennifer27@example.com', '9133161481');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('25', 'Ozella', 'Hauck', 'idickens@example.com', '9773438197');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('26', 'Emmet', 'Hammes', 'qcremin@example.org', '9694110645');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('27', 'Eleonore', 'Ward', 'antonietta.swift@example.com', '9397815776');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('28', 'Lori', 'Koch', 'damaris34@example.net', '9192291407');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('29', 'Sam', 'Kuphal', 'telly.miller@example.net', '9917826312');
+INSERT INTO `owners` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('30', 'Pearl', 'Prohaska', 'xeichmann@example.net', '9136605713');
+
 DROP TABLE IF EXISTS guests;
 CREATE TABLE guests (
 	id SERIAL PRIMARY KEY,
@@ -25,6 +59,77 @@ CREATE TABLE guests (
 	INDEX guests_phone_idx (phone),
 	INDEX guests_firstname_lastname (firstname, lastname)
 );
+
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('1', 'Reuben', 'Nienow', 'arlo50@example.org', '9374071116');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('2', 'Frederik', 'Upton', 'terrence.cartwright@example.org', '9127498182');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('3', 'Unique', 'Windler', 'rupert55@example.org', '9921090703');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('4', 'Norene', 'West', 'rebekah29@example.net', '9592139196');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('5', 'Frederick', 'Effertz', 'von.bridget@example.net', '9909791725');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('6', 'Victoria', 'Medhurst', 'sstehr@example.net', '9456642385');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('7', 'Austyn', 'Braun', 'itzel.beahan@example.com', '9448906606');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('8', 'Jaida', 'Kilback', 'johnathan.wisozk@example.com', '9290679311');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('9', 'Mireya', 'Orn', 'missouri87@example.org', '9228624339');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('10', 'Jordyn', 'Jerde', 'edach@example.com', '9443126821');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('11', 'Thad', 'McDermott', 'shaun.ferry@example.org', '9840726982');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('12', 'Aiden', 'Runolfsdottir', 'doug57@example.net', '9260442904');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('13', 'Bernadette', 'Haag', 'lhoeger@example.net', '9984574866');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('14', 'Dedric', 'Stanton', 'tconsidine@example.org', '9499932439');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('15', 'Clare', 'Wolff', 'effertz.laverna@example.org', '9251665331');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('16', 'Lina', 'Macejkovic', 'smitham.demarcus@example.net', '9762021357');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('17', 'Jerrell', 'Stanton', 'deja00@example.com', '9191103792');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('18', 'Golden', 'Wisozk', 'frida19@example.com', '9331565437');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('19', 'Elisa', 'Balistreri', 'romaine27@example.org', '9372983850');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('20', 'Reed', 'Bogan', 'zhyatt@example.com', '9924753974');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('21', 'Gwendolyn', 'McClure', 'zluettgen@example.net', '9745046704');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('22', 'Luz', 'Bailey', 'tillman.iliana@example.org', '9881942174');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('23', 'Alyce', 'Toy', 'russel.ewell@example.com', '9754884857');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('24', 'Oma', 'Ortiz', 'jailyn.feest@example.com', '9339073755');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('25', 'Valentine', 'Goldner', 'matteo.wiza@example.net', '9803404650');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('26', 'Rasheed', 'Ebert', 'brenden32@example.net', '9924275184');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('27', 'Misael', 'Lakin', 'benjamin.hilpert@example.com', '9619165091');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('28', 'Shaun', 'Fritsch', 'wwiegand@example.org', '9231898080');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('29', 'Katarina', 'Sipes', 'jenifer.gislason@example.net', '9348426774');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('30', 'Newton', 'Koss', 'beatty.river@example.org', '9574058915');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('31', 'Selmer', 'Quitzon', 'ztromp@example.net', '9363178382');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('32', 'Margarete', 'Koepp', 'idell70@example.net', '9743498718');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('33', 'Donavon', 'Bauch', 'michele.lakin@example.com', '9229739697');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('34', 'Ashlynn', 'Cummerata', 'weber.tatyana@example.net', '9710902090');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('35', 'Fletcher', 'Lang', 'mona94@example.com', '9502246403');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('36', 'Amiya', 'Leuschke', 'mathilde.macejkovic@example.com', '9461791942');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('37', 'Terrance', 'West', 'ebert.magnus@example.org', '9381729082');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('38', 'Keara', 'Kiehn', 'audie.franecki@example.net', '9796576345');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('39', 'Wyatt', 'Olson', 'jarvis92@example.org', '9212459514');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('40', 'Paula', 'Shields', 'casey.bayer@example.org', '9410763172');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('41', 'Ivah', 'Bernier', 'paris15@example.com', '9283284370');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('42', 'Liza', 'Howe', 'hadley72@example.org', '9926888657');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('43', 'Kevon', 'Gerhold', 'fhilll@example.com', '9398761644');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('44', 'Hermina', 'Lubowitz', 'amalia.reichel@example.org', '9213914905');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('45', 'Cara', 'Quigley', 'hailee.beier@example.net', '9287811077');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('46', 'Kian', 'Weimann', 'tankunding@example.net', '9168462586');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('47', 'Madelynn', 'Hahn', 'pleffler@example.org', '9598242802');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('48', 'Hassie', 'Monahan', 'lowe.amelia@example.net', '9765846197');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('49', 'Taryn', 'Kuvalis', 'aschneider@example.net', '9533355262');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('50', 'Hollis', 'Padberg', 'cathryn40@example.net', '9163727209');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('51', 'Henriette', 'Lindgren', 'allie.witting@example.com', '9891313707');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('52', 'Keven', 'DuBuque', 'durward83@example.com', '9613848114');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('53', 'Chaz', 'Yundt', 'stamm.bret@example.net', '9763350438');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('54', 'Rosalee', 'Dickens', 'concepcion.conn@example.net', '9675063949');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('55', 'Kip', 'Schoen', 'ibeer@example.com', '9987381304');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('56', 'Louie', 'Spencer', 'tkessler@example.com', '9938579943');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('57', 'Priscilla', 'Daniel', 'barrett12@example.com', '9886578202');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('58', 'Dean', 'Satterfield', 'orin69@example.net', '9160120629');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('59', 'Prudence', 'Shields', 'sleffler@example.net', '9414604655');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('60', 'Elaina', 'Buckridge', 'bartell.einar@example.net', '9916593682');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('61', 'Monserrat', 'O\'Conner', 'linda58@example.com', '9519551625');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('62', 'Ramona', 'Davis', 'abbigail68@example.net', '9484610686');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('63', 'Eldridge', 'Wilkinson', 'callie.wuckert@example.org', '9532811737');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('64', 'Emanuel', 'Reinger', 'loyal.herzog@example.org', '9659591995');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('65', 'Janis', 'Stamm', 'nils93@example.org', '9905318598');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('66', 'Nannie', 'Streich', 'chelsea01@example.com', '9412172452');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('67', 'Elva', 'Sawayn', 'modesta.haley@example.com', '9803009959');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('68', 'Ava', 'Nolan', 'mmarvin@example.com', '9428224970');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('69', 'Westley', 'Predovic', 'urunolfsdottir@example.net', '9247233922');
+INSERT INTO `guests` (`id`, `firstname`, `lastname`, `email`, `phone`) VALUES ('70', 'Antonina', 'Ferry', 'jamaal.farrell@example.com', '9902477849');
 
 
 DROP TABLE IF EXISTS flat_types;
@@ -40,9 +145,187 @@ INSERT INTO flat_types VALUES
 	(4, 'Загородное жилье'),
 	(5, 'Другое');
 
-DROP TABLE IF EXISTS cities;
-CREATE TABLE cities (
+DROP TABLE IF EXISTS city;
+CREATE TABLE city (
+  id SERIAL PRIMARY KEY,
+  country_id int(11) unsigned NOT NULL default '0',
+  region_id int(10) unsigned NOT NULL default '0',
+  name varchar(128) NOT NULL default ''
+);
 
+INSERT INTO `city` VALUES (4400, 3159, 4312, 'Москва');
+INSERT INTO `city` VALUES (4313, 3159, 4312, 'Абрамцево');
+INSERT INTO `city` VALUES (4314, 3159, 4312, 'Алабино');
+INSERT INTO `city` VALUES (4315, 3159, 4312, 'Апрелевка');
+INSERT INTO `city` VALUES (4316, 3159, 4312, 'Архангельское');
+INSERT INTO `city` VALUES (4317, 3159, 4312, 'Ашитково');
+INSERT INTO `city` VALUES (7592923, 3159, 4312, 'Байконур');
+INSERT INTO `city` VALUES (4318, 3159, 4312, 'Бакшеево');
+INSERT INTO `city` VALUES (4319, 3159, 4312, 'Балашиха');
+INSERT INTO `city` VALUES (4320, 3159, 4312, 'Барыбино');
+INSERT INTO `city` VALUES (4321, 3159, 4312, 'Белоомут');
+INSERT INTO `city` VALUES (4322, 3159, 4312, 'Белые Столбы');
+INSERT INTO `city` VALUES (4323, 3159, 4312, 'Бородино');
+INSERT INTO `city` VALUES (4324, 3159, 4312, 'Бронницы');
+INSERT INTO `city` VALUES (4325, 3159, 4312, 'Быково');
+INSERT INTO `city` VALUES (4326, 3159, 4312, 'Валуево');
+INSERT INTO `city` VALUES (4327, 3159, 4312, 'Вербилки');
+INSERT INTO `city` VALUES (4328, 3159, 4312, 'Верея');
+INSERT INTO `city` VALUES (4329, 3159, 4312, 'Видное');
+INSERT INTO `city` VALUES (4330, 3159, 4312, 'Внуково');
+INSERT INTO `city` VALUES (4331, 3159, 4312, 'Вождь Пролетариата');
+INSERT INTO `city` VALUES (4332, 3159, 4312, 'Волоколамск');
+INSERT INTO `city` VALUES (4333, 3159, 4312, 'Вороново');
+INSERT INTO `city` VALUES (4334, 3159, 4312, 'Воскресенск');
+INSERT INTO `city` VALUES (4335, 3159, 4312, 'Восточный');
+INSERT INTO `city` VALUES (4336, 3159, 4312, 'Востряково');
+INSERT INTO `city` VALUES (4337, 3159, 4312, 'Высоковск');
+INSERT INTO `city` VALUES (4338, 3159, 4312, 'Голицино');
+INSERT INTO `city` VALUES (4339, 3159, 4312, 'Деденево');
+INSERT INTO `city` VALUES (4340, 3159, 4312, 'Дедовск');
+INSERT INTO `city` VALUES (4341, 3159, 4312, 'Джержинский');
+INSERT INTO `city` VALUES (4342, 3159, 4312, 'Дмитров');
+INSERT INTO `city` VALUES (4343, 3159, 4312, 'Долгопрудный');
+INSERT INTO `city` VALUES (4344, 3159, 4312, 'Домодедово');
+INSERT INTO `city` VALUES (4345, 3159, 4312, 'Дорохово');
+INSERT INTO `city` VALUES (4346, 3159, 4312, 'Дрезна');
+INSERT INTO `city` VALUES (4347, 3159, 4312, 'Дубки');
+INSERT INTO `city` VALUES (4348, 3159, 4312, 'Дубна');
+INSERT INTO `city` VALUES (4349, 3159, 4312, 'Егорьевск');
+INSERT INTO `city` VALUES (4350, 3159, 4312, 'Железнодорожный');
+INSERT INTO `city` VALUES (4351, 3159, 4312, 'Жилево');
+INSERT INTO `city` VALUES (4352, 3159, 4312, 'Жуковский');
+INSERT INTO `city` VALUES (4353, 3159, 4312, 'Загорск');
+INSERT INTO `city` VALUES (4354, 3159, 4312, 'Загорянский');
+INSERT INTO `city` VALUES (4355, 3159, 4312, 'Запрудная');
+INSERT INTO `city` VALUES (4356, 3159, 4312, 'Зарайск');
+INSERT INTO `city` VALUES (4357, 3159, 4312, 'Звенигород');
+INSERT INTO `city` VALUES (4358, 3159, 4312, 'Зеленоград');
+INSERT INTO `city` VALUES (4359, 3159, 4312, 'Ивантеевка');
+INSERT INTO `city` VALUES (4360, 3159, 4312, 'Икша');
+INSERT INTO `city` VALUES (4361, 3159, 4312, 'Ильинский');
+INSERT INTO `city` VALUES (4362, 3159, 4312, 'Истра');
+INSERT INTO `city` VALUES (4363, 3159, 4312, 'Калининград');
+INSERT INTO `city` VALUES (4364, 3159, 4312, 'Кашира');
+INSERT INTO `city` VALUES (4365, 3159, 4312, 'Керва');
+INSERT INTO `city` VALUES (4366, 3159, 4312, 'Климовск');
+INSERT INTO `city` VALUES (4367, 3159, 4312, 'Клин');
+INSERT INTO `city` VALUES (4368, 3159, 4312, 'Клязьма');
+INSERT INTO `city` VALUES (4369, 3159, 4312, 'Кожино');
+INSERT INTO `city` VALUES (4370, 3159, 4312, 'Кокошкино');
+INSERT INTO `city` VALUES (4371, 3159, 4312, 'Коломна');
+INSERT INTO `city` VALUES (4372, 3159, 4312, 'Колюбакино');
+INSERT INTO `city` VALUES (3118538, 3159, 4312, 'Королев');
+INSERT INTO `city` VALUES (4373, 3159, 4312, 'Косино');
+INSERT INTO `city` VALUES (4374, 3159, 4312, 'Котельники');
+INSERT INTO `city` VALUES (4375, 3159, 4312, 'Красково');
+INSERT INTO `city` VALUES (4376, 3159, 4312, 'Красноармейск');
+INSERT INTO `city` VALUES (4377, 3159, 4312, 'Красногорск');
+INSERT INTO `city` VALUES (4378, 3159, 4312, 'Краснозаводск');
+INSERT INTO `city` VALUES (7593075, 3159, 4312, 'Краснознаменск');
+INSERT INTO `city` VALUES (4379, 3159, 4312, 'Красный Ткач');
+INSERT INTO `city` VALUES (4380, 3159, 4312, 'Крюково');
+INSERT INTO `city` VALUES (4381, 3159, 4312, 'Кубинка');
+INSERT INTO `city` VALUES (4382, 3159, 4312, 'Купавна');
+INSERT INTO `city` VALUES (4383, 3159, 4312, 'Куровское');
+INSERT INTO `city` VALUES (4384, 3159, 4312, 'Лесной Городок');
+INSERT INTO `city` VALUES (4385, 3159, 4312, 'Ликино-Дулево');
+INSERT INTO `city` VALUES (4386, 3159, 4312, 'Лобня');
+INSERT INTO `city` VALUES (4387, 3159, 4312, 'Лопатинский');
+INSERT INTO `city` VALUES (4388, 3159, 4312, 'Лосино-Петровский');
+INSERT INTO `city` VALUES (4389, 3159, 4312, 'Лотошино');
+INSERT INTO `city` VALUES (4390, 3159, 4312, 'Лукино');
+INSERT INTO `city` VALUES (4391, 3159, 4312, 'Луховицы');
+INSERT INTO `city` VALUES (4392, 3159, 4312, 'Лыткарино');
+INSERT INTO `city` VALUES (4393, 3159, 4312, 'Львовский');
+INSERT INTO `city` VALUES (4394, 3159, 4312, 'Люберцы');
+INSERT INTO `city` VALUES (4395, 3159, 4312, 'Малаховка');
+INSERT INTO `city` VALUES (4396, 3159, 4312, 'Михайловское');
+INSERT INTO `city` VALUES (4397, 3159, 4312, 'Михнево');
+INSERT INTO `city` VALUES (4398, 3159, 4312, 'Можайск');
+INSERT INTO `city` VALUES (4399, 3159, 4312, 'Монино');
+INSERT INTO `city` VALUES (4401, 3159, 4312, 'Муханово');
+INSERT INTO `city` VALUES (4402, 3159, 4312, 'Мытищи');
+INSERT INTO `city` VALUES (4403, 3159, 4312, 'Нарофоминск');
+INSERT INTO `city` VALUES (4404, 3159, 4312, 'Нахабино');
+INSERT INTO `city` VALUES (4405, 3159, 4312, 'Некрасовка');
+INSERT INTO `city` VALUES (4406, 3159, 4312, 'Немчиновка');
+INSERT INTO `city` VALUES (4407, 3159, 4312, 'Новобратцевский');
+INSERT INTO `city` VALUES (4408, 3159, 4312, 'Новоподрезково');
+INSERT INTO `city` VALUES (4409, 3159, 4312, 'Ногинск');
+INSERT INTO `city` VALUES (4410, 3159, 4312, 'Обухово');
+INSERT INTO `city` VALUES (4411, 3159, 4312, 'Одинцово');
+INSERT INTO `city` VALUES (4412, 3159, 4312, 'Ожерелье');
+INSERT INTO `city` VALUES (4413, 3159, 4312, 'Озеры');
+INSERT INTO `city` VALUES (4414, 3159, 4312, 'Октябрьский');
+INSERT INTO `city` VALUES (4415, 3159, 4312, 'Опалиха');
+INSERT INTO `city` VALUES (4416, 3159, 4312, 'Орехово-Зуево');
+INSERT INTO `city` VALUES (4417, 3159, 4312, 'Павловский Посад');
+INSERT INTO `city` VALUES (4418, 3159, 4312, 'Первомайский');
+INSERT INTO `city` VALUES (4419, 3159, 4312, 'Пески');
+INSERT INTO `city` VALUES (4420, 3159, 4312, 'Пироговский');
+INSERT INTO `city` VALUES (4421, 3159, 4312, 'Подольск');
+INSERT INTO `city` VALUES (4422, 3159, 4312, 'Полушкино');
+INSERT INTO `city` VALUES (4423, 3159, 4312, 'Правдинский');
+INSERT INTO `city` VALUES (4424, 3159, 4312, 'Привокзальный');
+INSERT INTO `city` VALUES (4425, 3159, 4312, 'Пролетарский');
+INSERT INTO `city` VALUES (3138841, 3159, 4312, 'Протвино');
+INSERT INTO `city` VALUES (4426, 3159, 4312, 'Пушкино');
+INSERT INTO `city` VALUES (4427, 3159, 4312, 'Пущино');
+INSERT INTO `city` VALUES (4428, 3159, 4312, 'Радовицкий');
+INSERT INTO `city` VALUES (4429, 3159, 4312, 'Раменское');
+INSERT INTO `city` VALUES (4430, 3159, 4312, 'Реутов');
+INSERT INTO `city` VALUES (4431, 3159, 4312, 'Решетниково');
+INSERT INTO `city` VALUES (4432, 3159, 4312, 'Родники');
+INSERT INTO `city` VALUES (4433, 3159, 4312, 'Рошаль');
+INSERT INTO `city` VALUES (4434, 3159, 4312, 'Рублево');
+INSERT INTO `city` VALUES (4435, 3159, 4312, 'Руза');
+INSERT INTO `city` VALUES (4436, 3159, 4312, 'Салтыковка');
+INSERT INTO `city` VALUES (4437, 3159, 4312, 'Северный');
+INSERT INTO `city` VALUES (4438, 3159, 4312, 'Сергиев Посад');
+INSERT INTO `city` VALUES (4439, 3159, 4312, 'Серебряные Пруды');
+INSERT INTO `city` VALUES (4440, 3159, 4312, 'Серпухов');
+INSERT INTO `city` VALUES (4441, 3159, 4312, 'Солнечногорск');
+INSERT INTO `city` VALUES (4442, 3159, 4312, 'Солнцево');
+INSERT INTO `city` VALUES (4443, 3159, 4312, 'Софрино');
+INSERT INTO `city` VALUES (4444, 3159, 4312, 'Старая Купавна');
+INSERT INTO `city` VALUES (4445, 3159, 4312, 'Старбеево');
+INSERT INTO `city` VALUES (4446, 3159, 4312, 'Ступино');
+INSERT INTO `city` VALUES (4447, 3159, 4312, 'Сходня');
+INSERT INTO `city` VALUES (4448, 3159, 4312, 'Талдом');
+INSERT INTO `city` VALUES (4449, 3159, 4312, 'Текстильщик');
+INSERT INTO `city` VALUES (4450, 3159, 4312, 'Темпы');
+INSERT INTO `city` VALUES (4451, 3159, 4312, 'Тишково');
+INSERT INTO `city` VALUES (4452, 3159, 4312, 'Томилино');
+INSERT INTO `city` VALUES (4453, 3159, 4312, 'Троицк');
+INSERT INTO `city` VALUES (4454, 3159, 4312, 'Туголесский Бор');
+INSERT INTO `city` VALUES (4455, 3159, 4312, 'Тучково');
+INSERT INTO `city` VALUES (4456, 3159, 4312, 'Уваровка');
+INSERT INTO `city` VALUES (4457, 3159, 4312, 'Удельная');
+INSERT INTO `city` VALUES (4458, 3159, 4312, 'Успенское');
+INSERT INTO `city` VALUES (4459, 3159, 4312, 'Фирсановка');
+INSERT INTO `city` VALUES (4460, 3159, 4312, 'Фосфоритный');
+INSERT INTO `city` VALUES (4461, 3159, 4312, 'Фрязино');
+INSERT INTO `city` VALUES (4462, 3159, 4312, 'Фряново');
+INSERT INTO `city` VALUES (4463, 3159, 4312, 'Химки');
+INSERT INTO `city` VALUES (4464, 3159, 4312, 'Хорлово');
+INSERT INTO `city` VALUES (4465, 3159, 4312, 'Хотьково');
+INSERT INTO `city` VALUES (4466, 3159, 4312, 'Черкизово');
+INSERT INTO `city` VALUES (4467, 3159, 4312, 'Черноголовка');
+INSERT INTO `city` VALUES (4468, 3159, 4312, 'Черусти');
+INSERT INTO `city` VALUES (4469, 3159, 4312, 'Чехов');
+INSERT INTO `city` VALUES (4470, 3159, 4312, 'Шарапово');
+INSERT INTO `city` VALUES (4471, 3159, 4312, 'Шатура');
+INSERT INTO `city` VALUES (4472, 3159, 4312, 'Шатурторф');
+INSERT INTO `city` VALUES (4473, 3159, 4312, 'Шаховская');
+INSERT INTO `city` VALUES (4474, 3159, 4312, 'Шереметьевский');
+INSERT INTO `city` VALUES (4475, 3159, 4312, 'Щелково');
+INSERT INTO `city` VALUES (4476, 3159, 4312, 'Щербинка');
+INSERT INTO `city` VALUES (4477, 3159, 4312, 'Электрогорск');
+INSERT INTO `city` VALUES (4478, 3159, 4312, 'Электросталь');
+INSERT INTO `city` VALUES (4479, 3159, 4312, 'Электроугли');
+INSERT INTO `city` VALUES (4480, 3159, 4312, 'Яхрома');
+INSERT INTO `city` VALUES (4962, 3159, 4925, 'Санкт-Петербург');
 
 DROP TABLE IF EXISTS flats;
 CREATE TABLE flats (
@@ -63,8 +346,30 @@ CREATE TABLE flats (
 	INDEX (location_id),
 	FOREIGN KEY (owner_id) REFERENCES owners(id),
 	FOREIGN KEY (flat_type_id) REFERENCES flat_types(id),
-	FOREIGN KEY (location_id) REFERENCES cities(city_id)
+	FOREIGN KEY (location_id) REFERENCES city(id)
 );
+
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('1', '3', '1', '4400', 'Cosy white room', 'Cosy white room with a bathroom', '2', 'approved');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('2', '1', '2', '4962', 'Beautiful flat in the centre', 'Beautiful flat in the centre in a walking distance from Hermitage', '5', 'approved');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('3', '2', '3', '4400', 'A little Harry Potter room', 'Suitable for two', '2', 'registred');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('4', '1', '5', '4403', 'The Big loft', 'Great modern loft', '5', 'approved');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('5', '4', '8', '4962', 'Small house', 'A small house for a family', '5', 'deleted');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('6', '5', '10', '4401', 'A parking place', 'Can be used for camping', '1', 'deleted');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('7', '2', '13', '4400', '2-roomed flat', 'A nice located flat with a fireplace', '4', 'approved'),
+	('8', '3', '14', '4403', 'Simple room', 'For one guest', '1', 'approved'),
+	('9', '2', '16', '4404', '3-roomed flat', 'For warm companies', '8', 'registred'),
+	('10', '1', '18', '4405', 'A hotel room', 'Gjhkh akfhkjhkh jdghlj', '1', 'deleted');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+	('11', '3', '1', '4400', 'Cosy blue room', 'Cosy blue room with a bathroom', '2', 'approved');
+
+UPDATE flats SET status='registred' WHERE id=5;
 
 DROP TABLE IF EXISTS photo;
 CREATE TABLE photo (
@@ -74,6 +379,19 @@ CREATE TABLE photo (
 	metadata JSON,
 	FOREIGN KEY (flat_id) REFERENCES flats (id)
 );
+
+INSERT INTO photo (id, flat_id, filename, metadata) VALUES 
+(1, 1, 'a.jpg', NULL),
+(2, 1, 'b.jpg', NULL),
+(3, 1, 'c.jpg', NULL),
+(4, 2, 'd.jpg', NULL),
+(5, 2, 'e.jpg', NULL),
+(6, 3, 'f.jpg', NULL),
+(7, 4, 'g.jpg', NULL),
+(8, 5, 'h.jpg', NULL),
+(9, 5, 'i.jpg', NULL),
+(10, 3, 'j.jpg', NULL)
+;
 
 DROP TABLE IF EXISTS messages; -- связаться с хозяином
 CREATE TABLE messages (
@@ -88,8 +406,81 @@ CREATE TABLE messages (
     FOREIGN KEY (target_owner_id) REFERENCES owners(id)
 );
 
+INSERT INTO `messages` VALUES 
+('1','1','2','Voluptatem ut quaerat quia. Pariatur esse amet ratione qui quia. In necessitatibus reprehenderit et. Nam accusantium aut qui quae nesciunt non.','1995-08-28 22:44:29'),
+('2','2','1','Sint dolores et debitis est ducimus. Aut et quia beatae minus. Ipsa rerum totam modi sunt sed. Voluptas atque eum et odio ea molestias ipsam architecto.',now()),
+('3','3','1','Sed mollitia quo sequi nisi est tenetur at rerum. Sed quibusdam illo ea facilis nemo sequi. Et tempora repudiandae saepe quo.','1993-09-14 19:45:58'),
+('4','1','3','Quod dicta omnis placeat id et officiis et. Beatae enim aut aliquid neque occaecati odit. Facere eum distinctio assumenda omnis est delectus magnam.','1985-11-25 16:56:25'),
+('5','1','5','Voluptas omnis enim quia porro debitis facilis eaque ut. Id inventore non corrupti doloremque consequuntur. Molestiae molestiae deleniti exercitationem sunt qui ea accusamus deserunt.','1999-09-19 04:35:46'),
+('6','1','6','Rerum labore culpa et laboriosam eum totam. Quidem pariatur sit alias. Atque doloribus ratione eum rem dolor vitae saepe.','1973-11-09 08:12:04'),
+('7','1','7','Perspiciatis temporibus doloribus debitis. Et inventore labore eos modi. Quo temporibus corporis minus. Accusamus aspernatur nihil nobis placeat molestiae et commodi eaque.','1998-04-09 00:00:26'),
+('8','8','8','Suscipit dolore voluptas et sit vero et sint. Rem ut ratione voluptatum assumenda nesciunt ea. Quas qui qui atque ut. Similique et praesentium non voluptate iure. Eum aperiam officia quia dolorem.','2005-08-20 18:40:27'),
+('9','9','9','Et quia libero aut vitae minus. Rerum a blanditiis debitis sit nam. Veniam quasi aut autem ratione dolorem. Sunt quo similique dolorem odit totam sint sed.','2013-03-19 04:10:10'),
+('10','10','10','Praesentium molestias quia aut odio. Est quis eius ut animi optio molestiae. Amet tempore sequi blanditiis in est.','1976-05-22 14:38:15'),
+('11','11','11','Molestiae laudantium quibusdam porro est alias placeat assumenda. Ut consequatur rerum officiis exercitationem eveniet. Qui eum maxime sed in.','1996-04-27 00:23:37'),
+('12','12','12','Quo asperiores et id veritatis placeat. Aperiam ut sit exercitationem iste vel nisi fugit quia. Suscipit labore error ducimus quaerat distinctio quae quasi.','1989-05-13 22:39:47'),
+('13','13','13','Earum sunt quia sed harum modi accusamus. Quia dolor laboriosam asperiores aliquam quia. Sint id quasi et cumque qui minima ut quo. Autem sed laudantium officiis sit sit.','1997-09-30 00:06:14'),
+('14','14','14','Aut enim sint voluptas saepe. Ut tenetur quos rem earum sint inventore fugiat. Eaque recusandae similique earum laborum.','1977-10-15 23:26:40'),
+('15','15','15','Nisi rerum officiis officiis aut ad voluptates autem. Dolor nesciunt eum qui eos dignissimos culpa iste. Atque qui vitae quos odit inventore eum. Quam et voluptas quia amet.','1977-10-13 19:40:32'),
+('16','16','16','Consequatur ut et repellat non voluptatem nihil veritatis. Vel deleniti omnis et consequuntur. Et doloribus reprehenderit sed earum quas velit labore.','1998-05-24 10:09:36'),
+('17','17','17','Iste deserunt in et et. Corrupti rerum a veritatis harum. Ratione consequatur est ut deserunt dolores.','1993-01-30 15:51:38'),
+('18','18','18','Dicta non inventore autem incidunt accusamus amet distinctio. Aut laborum nam ab maxime. Maxime minima blanditiis et neque. Et laboriosam qui at deserunt magnam.','1996-05-19 14:18:39'),
+('19','19','19','Amet ad dolorum distinctio excepturi possimus quia. Adipisci veniam porro ipsum ipsum tempora est blanditiis. Magni ut quia eius qui.','1998-08-12 04:42:34'),
+('20','20','20','Porro aperiam voluptate quo eos nobis. Qui blanditiis cum id eos. Est sit reprehenderit consequatur eum corporis. Molestias quia quo sit architecto aut.','2013-11-01 05:14:05'),
+('21','21','21','Architecto sunt asperiores modi. A commodi non qui.','2007-10-22 01:34:17'),
+('22','22','22','Minus praesentium ipsum iusto ipsum et a nobis. Aut distinctio enim dolor suscipit et. Quia culpa molestiae architecto quod. Error nulla qui et harum sapiente maxime qui sed.','1986-07-17 11:23:56'),
+('23','23','23','Explicabo nostrum eius cum molestiae. Et deserunt aut consectetur molestiae. Illo veritatis sed ab.','2002-06-22 15:10:59'),
+('24','24','24','Excepturi consequatur ducimus voluptatum. Est sed perferendis ducimus officia et. Qui nemo sapiente harum rerum.','2007-09-14 22:06:16'),
+('25','25','25','Non deserunt quis non illum. In vel exercitationem dolore reiciendis non animi sequi cumque. Officia et repellat in aut voluptas. Dignissimos sed voluptatem minima eligendi. Magnam porro omnis mollitia aspernatur error quia.','2006-06-16 19:28:59'),
+('26','26','26','Minus tenetur molestiae laudantium est voluptatem tempora. Sed ab veniam porro similique cumque. Accusamus illo est et tempora excepturi odit.','1977-11-04 08:02:22'),
+('27','27','27','At ratione quae facere minima exercitationem vel ipsum ipsam. Qui eligendi repellat ut unde quos hic sit. Itaque expedita voluptatem id numquam. Provident culpa expedita alias optio ipsum id. Voluptatum quae quidem nihil aut nemo voluptatibus.','1975-06-25 22:37:18'),
+('28','28','28','Nam dignissimos nobis qui qui voluptate. Dolor voluptas praesentium quis tenetur deleniti dolorem incidunt. Cupiditate qui nam excepturi.','2007-03-22 10:13:05'),
+('29','29','29','Molestias ratione tenetur sint. Vel rerum voluptas vel vitae et aut non autem. Distinctio sunt in dignissimos esse eligendi praesentium. Ut totam autem vel sapiente architecto et.','2003-01-11 19:37:45'),
+('30','30','30','Perferendis in eius architecto debitis exercitationem. Optio deleniti ad dolor sapiente soluta. Quisquam deserunt autem amet magni quasi quo dolores. Expedita ea omnis omnis sint.','2010-04-13 15:06:20'),
+('31','31','1','Voluptatum totam inventore numquam dolor mollitia. Qui explicabo ut commodi culpa libero quisquam. Doloribus consequuntur rerum in nesciunt quia consequuntur ut.','2009-02-23 05:02:06'),
+('32','32','2','Delectus animi laboriosam magnam. Dolor a qui numquam et. Magnam rerum exercitationem officiis numquam.','2017-06-21 05:19:41'),
+('33','33','3','Blanditiis incidunt fugiat itaque animi impedit modi ratione at. Excepturi vel hic enim quidem aut ullam facilis. Ipsum aut maxime deserunt doloremque.','1996-01-15 13:05:37'),
+('34','34','4','Quia magnam reprehenderit libero fugiat. Voluptatem id qui incidunt nihil et voluptatem quos dicta. Corrupti et ut ratione quos architecto omnis. Accusamus quo aliquam hic sit quia illum.','1987-01-09 11:35:59'),
+('35','35','5','Voluptatem aperiam omnis ut sed nulla. Autem optio eligendi et corrupti.','1980-07-24 15:48:57'),
+('36','36','6','Omnis dolor dignissimos vel tempora. Quia explicabo iste tempora delectus esse. Laudantium molestiae recusandae laboriosam quam.','2007-01-31 14:18:23'),
+('37','37','7','Nesciunt vitae consequuntur et molestiae deleniti cupiditate nostrum. Et natus eveniet officiis voluptas voluptas magni velit. Explicabo ipsam et quis eos dolore explicabo.','1971-09-15 21:08:26'),
+('38','38','8','Atque deleniti voluptas labore veniam quas ipsam voluptatem. Similique facere qui est quaerat est et. Incidunt corporis aut deleniti aut excepturi.','1991-12-06 22:30:58'),
+('39','39','9','Placeat eos est animi voluptatem quas dolore. Dolor minima rem corporis perspiciatis. Nemo est autem voluptate est.','2004-10-09 10:37:23'),
+('40','40','10','Ab quibusdam dolor et illum quis dolore. Qui deserunt consequuntur voluptatem itaque. Expedita sit velit hic repudiandae provident culpa quisquam. Est aut rerum itaque in non et.','1972-03-14 21:06:39'),
+('41','41','11','Quasi porro esse voluptate aut quia quo cupiditate. Nihil dolorem neque ut est quibusdam. Eius labore quidem rerum animi eligendi sapiente. Quo dolor voluptates fugit sed eos ipsam illo quia.','2017-04-22 21:50:21'),
+('42','42','12','Similique accusantium voluptatem perferendis dignissimos et inventore qui. Est aspernatur et voluptas occaecati officiis dolores numquam. Ut amet quas natus voluptatibus.','2001-11-06 03:19:29'),
+('43','43','13','Nostrum aspernatur enim cum iure ut neque similique ut. Labore repudiandae eum inventore est consequatur. Non sed ea incidunt laboriosam ea itaque porro. Esse culpa id explicabo odio consequatur unde voluptatum.','1997-02-17 15:31:00'),
+('44','44','14','Magni ex dolor enim assumenda sit modi molestiae. Est quis aliquam ut id aliquam eveniet est. Fuga quaerat neque tenetur. Nihil reprehenderit necessitatibus ut quo nam excepturi.','1998-06-20 05:03:15'),
+('45','45','15','Quaerat eum sequi consequatur perferendis in libero. Nulla facilis sed facere natus. Harum aut incidunt quia harum aut beatae aspernatur. Perferendis dolor et ut corporis blanditiis.','2004-04-20 20:20:36'),
+('46','46','16','Expedita quia similique praesentium placeat. Harum omnis perspiciatis occaecati odio. Enim consequatur sequi ut hic deserunt odit quos.','2005-06-30 22:41:30'),
+('47','47','17','Cum reiciendis neque unde reprehenderit totam laborum porro. Voluptas sed eveniet voluptas. Qui sed consequatur exercitationem quis. Nihil velit possimus magnam cumque dolore cum nemo.','1973-09-27 23:29:10'),
+('48','48','18','Dolorum dignissimos ipsa tempore enim. Aliquam ex labore exercitationem odio id dignissimos eaque. Aperiam cupiditate alias ut rerum asperiores et.','1986-05-03 10:04:03'),
+('49','49','19','Molestiae omnis magnam labore quidem omnis doloribus delectus. Aut a ut velit quos. Quae est omnis vel omnis omnis aut distinctio aperiam. Numquam nulla quo qui quis.','1970-08-09 14:37:59'),
+('50','50','20','Dolorem necessitatibus ullam cumque quo assumenda alias. Molestias quibusdam earum commodi placeat. Saepe voluptatem voluptatem aut.','1976-06-06 22:03:25'),
+('51','51','21','Tenetur aut nobis pariatur et accusamus est eos deserunt. Non quia ratione aspernatur. Perspiciatis doloremque adipisci qui et animi. Aut quis in non.','1992-04-30 20:58:57'),
+('52','52','22','Animi et et incidunt ea sequi eaque quia. Quia laudantium est necessitatibus natus qui velit impedit vitae. Dolorum vitae eius tempore et magnam.','1973-03-10 13:48:51'),
+('53','53','23','Enim in minima dolores possimus odio quia. Officia qui quis laudantium ea dolor omnis. Dolores nihil optio exercitationem optio nihil exercitationem laboriosam est. Enim quasi qui dolorem sit tempora labore laboriosam.','1982-11-18 08:42:29'),
+('54','54','24','Quam tempora accusantium ullam doloribus eveniet ut. Qui dolores ut et. Molestiae velit dolorem vel similique neque.','1995-03-14 17:47:23'),
+('55','55','25','Dolore molestias aut sit cum. Libero tempora laboriosam mollitia saepe. Ipsa voluptatum itaque sequi dolorem. Ipsam sint sequi perferendis odio amet dicta optio fugit.','1999-07-08 10:32:41'),
+('56','56','26','Inventore facere perferendis nostrum est. Aut eos laborum iusto itaque tenetur. Dicta nihil maxime necessitatibus ut nihil. Enim ab et quo aperiam.','2008-10-15 17:57:56'),
+('57','57','27','Voluptates consequatur et et necessitatibus soluta et. Reiciendis saepe debitis placeat autem. Aperiam soluta et commodi sint consectetur.','1974-01-30 16:15:55'),
+('58','58','28','Libero eos incidunt ipsum omnis sit quisquam dolores doloribus. Doloremque nobis repellat sit vel totam molestias. Minus quasi qui labore tenetur molestiae est assumenda.','1979-10-08 08:07:50'),
+('59','59','29','Tempore vero voluptatem mollitia qui suscipit iusto suscipit. Aut consectetur accusamus provident consequatur officiis. Amet fugit voluptatibus dolorem reiciendis voluptatem cupiditate quia.','1994-08-20 09:12:31'),
+('60','60','8','Quia sequi animi repellat. Consequatur ad soluta consequatur quo. Molestias suscipit et placeat non officiis rerum et. Voluptatibus ea veniam architecto labore aut corporis qui.','1974-04-18 22:45:58'),
+('61','61','1','Aut ab numquam non commodi aut. Assumenda adipisci hic tenetur. Possimus delectus dicta ab id dolores.','1987-10-17 16:11:13'),
+('62','62','2','Eos amet ut qui tempora saepe totam. Velit ut quis ut quia. Est id eos et commodi nihil. Rerum saepe quia consequatur laborum delectus suscipit velit.','2012-11-25 07:00:39'),
+('63','63','3','Eligendi qui iusto non. Rerum amet aut tempore expedita ut assumenda perspiciatis. Id ut nemo quis. Sit quia repellendus et minus.','2005-02-27 23:18:23'),
+('64','64','4','Consectetur ad nihil tenetur iusto. Possimus qui quibusdam id ut. Sunt molestias quidem quisquam eligendi natus. Assumenda magnam laborum harum nemo qui nisi.','1998-10-18 18:46:37'),
+('65','65','5','Alias voluptatem odit aliquid possimus id est. Aliquid excepturi soluta deserunt vel quidem voluptatem ipsam. Natus ex quis neque unde est. Molestias possimus sint quos sed quo.','1988-05-14 20:25:46'),
+('66','66','6','Temporibus voluptates ipsa placeat est dolorum. Mollitia aut laboriosam consequuntur amet asperiores maxime aspernatur distinctio. Incidunt est voluptatem ipsam provident optio dignissimos praesentium. Dolores quis laudantium ut beatae voluptas blanditiis est.','1988-03-02 21:17:37'),
+('67','67','7','Minus necessitatibus voluptate molestiae eius. Illo consequatur aliquam dolore fugit nemo est beatae beatae.','2001-09-08 17:21:02'),
+('68','68','8','Et aut libero odit id. Occaecati doloribus et quam excepturi eveniet esse.','1990-05-02 19:23:36'),
+('69','69','9','Rerum qui deleniti et dolorum quae. Voluptates repudiandae aliquid at repellat. At delectus rerum aut qui qui. Accusantium suscipit blanditiis aut tenetur quae et ut. Fugit dolorem veritatis quam corrupti odio sint voluptatem impedit.','1992-11-20 08:57:16'),
+('70','70','10','Occaecati et quisquam fugit a. Et repellendus alias quam incidunt ut tempora. Deserunt temporibus aut saepe eius excepturi.','1970-08-11 21:33:29'),
+('71','1','11','Sint quo natus ut odit corrupti laboriosam iure molestias. Quod repudiandae consequuntur quas et dolore expedita. Iste dolorem eius officiis. Deleniti magni iusto autem vero.','2005-10-16 03:28:41');
+
 DROP TABLE IF EXISTS flat_references; -- отзывы от гостей
-CREATE TABLE flat_referencs (
+CREATE TABLE flat_references (
 	id SERIAL PRIMARY KEY,
 	from_guest_id BIGINT UNSIGNED NOT NULL,
 	flat_id BIGINT UNSIGNED NOT NULL,
@@ -99,3 +490,161 @@ CREATE TABLE flat_referencs (
 	FOREIGN KEY (from_guest_id) REFERENCES guests(id),
 	FOREIGN KEY (flat_id) REFERENCES flats(id)
 );
+
+INSERT INTO flat_references (id, from_guest_id, flat_id, mark, body, created_at) VALUES 
+	('1','10','3','7','Aut quas animi sed quis. Autem explicabo totam accusamus. Sapiente in sunt in dolores. Totam est repellendus voluptas.','1990-08-26 13:57:28'),
+	('2','11','1','10','Harum non ea incidunt accusamus fugit voluptatibus. Totam voluptatibus inventore dolorum odit.','2017-08-01 23:04:18'),
+	('3','1','2','9','Consequuntur atque ut officiis est laudantium sapiente quia. Ut atque at corrupti autem. Consequatur repudiandae consequatur ut eligendi ipsam eum vero.','1984-08-20 04:11:47'),
+	('4','12','5','3','Explicabo fugit consequatur non. Ex qui culpa amet. Accusamus consequatur sed quia qui nihil quia.','1998-08-07 18:07:35'),
+	('5','6','1','10','Aut vero dolore hic et reiciendis omnis. Nesciunt quis aut odit quam. Reprehenderit omnis molestiae ipsa vero laboriosam totam consectetur cumque. Facere et qui dolore ut architecto reprehenderit.','1989-05-22 06:13:52'),
+	('6','15','4','8','Qui omnis a assumenda tempora assumenda. Consequatur nihil dolorem veritatis qui dolores vel.','2010-08-08 17:23:39'),
+	('7','25','3','10','Consequatur repudiandae voluptas ex ea. Commodi non officiis culpa quos. Eum id sed voluptatibus.','2011-03-01 02:20:15'),
+	('8','30','3','10','Velit tenetur qui ratione dolore non. Ad omnis totam aliquid quos.','2008-01-26 14:29:48'),
+	('9','70','1','9','Beatae et adipisci dolorem. Consequatur ut tenetur nulla dolor corporis vero.','1996-07-08 15:22:44'),
+	('10','45','2','7','Quia est natus assumenda explicabo fugit atque. Ea sit maiores quod repellendus molestiae. Qui consectetur qui aut ipsa corporis dolore architecto corporis.','2015-12-29 19:09:22');
+
+DROP TABLE IF EXISTS reservations;
+CREATE TABLE reservations (
+	id SERIAL PRIMARY KEY,
+	guest_id BIGINT UNSIGNED NOT NULL,
+	flat_id BIGINT UNSIGNED NOT NULL,
+	arrival_date DATE,
+	departure_date DATE,
+	status ENUM ('reserved', 'cancelled', 'visited', 'not_visited'),
+	reserved_at DATETIME DEFAULT NOW(),
+	FOREIGN KEY (guest_id) REFERENCES guests(id),
+	FOREIGN KEY (flat_id) REFERENCES flats(id)
+);
+
+INSERT INTO reservations (guest_id, flat_id, arrival_date, departure_date, status) VALUES
+	('10', '3', '2019-11-04', '2019-11-09', 'reserved'),
+	('11', '1', '2019-10-04', '2019-10-06', 'visited'),
+	('20', '2', '2019-12-04', '2019-12-14', 'reserved'),
+	('25', '4', '2018-12-04', '2019-01-04', 'cancelled'),
+	('35', '5', '2019-09-04', '2019-09-05', 'not_visited'),
+	('44', '3', '2019-11-11', '2019-11-14', 'reserved'),
+	('16', '1', '2019-10-25', '2019-10-27', 'visited'),
+	('23', '2', '2019-11-01', '2019-12-01', 'reserved'),
+	('28', '5', '2019-01-01', '2019-01-02', 'cancelled'),
+	('39', '4', '2019-09-04', '2019-09-05', 'not_visited'),
+	('1', '6', '2019-03-04', '2019-06-05', 'visited'),
+	('1', '6', '2019-08-04', '2019-10-05', 'visited');
+
+DROP TABLE IF EXISTS payments;
+CREATE TABLE payments (
+	reservation_id SERIAL PRIMARY KEY,
+	money_for_flat FLOAT,
+	money_for_service FLOAT,
+	transferring_status ENUM ('processing', 'accepted', 'sent to owner', 'returned to guest'),
+	FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+);
+
+INSERT INTO payments VALUES (1, 10000.0, 1000.0, 'accepted'), (2, 6000.0, 500.0, 'sent to owner'), (3, 10000.0, 1000.0, 'processing'),
+	(4, 20000.0, 2000.0, 'returned to guest'), (5, 3500.0, 700.0, 'accepted'), (6, 10000.0, 1000.0, 'accepted'), 
+	(7, 6000.0, 500.0, 'sent to owner'), (8, 10000.0, 1000.0, 'processing'),
+	(9, 20000.0, 2000.0, 'returned to guest'), (10, 3500.0, 700.0, 'accepted');
+
+-- готовый календарь
+CREATE OR REPLACE VIEW calendar AS
+	SELECT DATE(NOW()) + INTERVAL `d`.`dayOfYear` DAY AS 'Даты заезда' FROM (
+    	SELECT (`c`.`num`*100+`d`.`num`*10+`s`.`num`) AS `dayOfYear` FROM (
+        	SELECT 0 AS `num`
+        	UNION SELECT 1
+        	UNION SELECT 2
+        	UNION SELECT 3
+        	UNION SELECT 4
+        	UNION SELECT 5
+        	UNION SELECT 6
+        	UNION SELECT 7
+        	UNION SELECT 8
+        	UNION SELECT 9
+    	) AS `s`
+    	JOIN (
+      		SELECT 0 AS `num`
+        	UNION SELECT 1
+        	UNION SELECT 2
+        	UNION SELECT 3
+        	UNION SELECT 4
+        	UNION SELECT 5
+        	UNION SELECT 6
+        	UNION SELECT 7
+        	UNION SELECT 8
+        	UNION SELECT 9
+      	) AS `d` ON TRUE
+      	JOIN (
+        	SELECT 0 AS `num`
+        	UNION SELECT 1
+        	UNION SELECT 2
+        	UNION SELECT 3
+        	UNION SELECT 4
+        	UNION SELECT 5
+        	UNION SELECT 6
+        	UNION SELECT 7
+        	UNION SELECT 8
+        	UNION SELECT 9
+      	) AS `c` ON TRUE
+      	HAVING `dayOfYear` < DAYOFYEAR(NOW()) 
+  		) AS `d`;
+  		
+-- выборка данных по квартире с фото и типом:
+SELECT * FROM flats
+    JOIN 
+    photo ON flats.id = photo.flat_id
+    JOIN 
+    flat_types ON flats.flat_type_id = flat_types.id
+WHERE flats.id = 1;
+
+-- посмотреть все отзывы, начиная с наивысших
+SELECT fr.mark, fr.body AS reference, f.flatname, f.decription 
+	FROM flat_references AS fr JOIN flats AS f
+	ON f.id = fr.flat_id
+	ORDER BY mark DESC;
+
+-- посчитать, сколько квартир в каждом городе
+SELECT
+	c.name,
+	count(*)
+FROM flats f
+JOIN city c on f.location_id = c.id
+GROUP BY c.id
+ORDER BY count(*) DESC;
+
+-- найти все квартиры в Москве
+SELECT flatname, decription FROM flats f JOIN city c on f.location_id = c.id
+	WHERE c.name='Москва';
+
+-- найти самого частого гостя для квартиры
+SELECT flatname, 
+	COUNT(*) AS visits,
+	CONCAT(firstname, ' ', lastname) AS guest
+	FROM reservations
+    	JOIN flats ON flats.id = reservations.flat_id
+    	JOIN guests ON guests.id = reservations.guest_id
+	WHERE flats.id = 1
+    GROUP BY guests.id
+	ORDER BY visits DESC
+	LIMIT 1;
+ 
+-- посчитать суммy всех поступивших через сайт платежей
+SELECT (SUM(money_for_flat) + SUM(money_for_service)) AS accepted_payments FROM payments WHERE transferring_status = 'accepted';
+
+-- найти, сколько подтвержденных квартир у каждого собственника
+SELECT firstname, lastname, COUNT(*) AS flat_count FROM owners
+    JOIN flats ON owners.id = flats.owner_id
+  where flats.status = 'approved'
+  GROUP BY owners.id
+  ORDER BY flat_count DESC;
+
+-- найти свободные квартиры на конкретную дату
+SELECT flatname, decription, r.status FROM reservations r JOIN flats f ON r.flat_id = f.id
+	WHERE ('2019-11-11' NOT BETWEEN r.arrival_date AND r.departure_date);
+
+
+DELIMITER //
+DROP FUNCTION IF EXISTS free_flats
+CREATE FUNCTION free_flats(a_date)
+RETURNS VARCHAR NOT DETERMINISTIC
+BEGIN
+	WHERE a_date NOT BETWEEN arrival_date AND departure_date
+END //
+DELIMITER ;
