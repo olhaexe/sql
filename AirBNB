@@ -635,9 +635,26 @@ SELECT firstname, lastname, COUNT(*) AS flat_count FROM owners
   GROUP BY owners.id
   ORDER BY flat_count DESC;
 
--- найти свободные квартиры на конкретную дату
-SELECT flatname, decription, r.status FROM reservations r JOIN flats f ON r.flat_id = f.id
-	WHERE ('2019-11-11' NOT BETWEEN r.arrival_date AND r.departure_date);
+-- найти свободные квартиры на конкретную дату (как сделать, чтобы строки не дублировались?)
+SELECT f.flatname, f.decription, r.status FROM reservations r LEFT JOIN flats f ON r.flat_id = f.id
+	WHERE ('2019-11-11' NOT BETWEEN r.arrival_date AND r.departure_date) OR r.status='cancelled';
+
+-- выбрать всех гостей, которые посетили квартиру
+SELECT flatname, 
+	CONCAT(firstname, ' ', lastname) AS guest
+	FROM reservations
+    	JOIN flats ON flats.id = reservations.flat_id
+    	JOIN guests ON guests.id = reservations.guest_id
+	WHERE flats.id = 2;
+
+-- найти квартиру, в которую было больше всего заездов
+SELECT f.id, f.flatname, 
+	COUNT(*) AS visits
+	FROM reservations r JOIN flats f ON f.id = r.flat_id
+    GROUP BY r.flat_id
+	ORDER BY visits DESC
+	LIMIT 1;
+
 
 
 DELIMITER //
