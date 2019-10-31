@@ -334,7 +334,7 @@ CREATE TABLE flats (
 	owner_id BIGINT UNSIGNED NOT NULL,
 	location_id BIGINT UNSIGNED NOT NULL,
 	flatname VARCHAR (255),
-	decription TEXT,
+	description TEXT,
 	max_guests INT,
 	status ENUM ('registred', 'approved', 'deleted'),
 	advantages SET ('Wi-Fi', 'Бесплатная парковка', 'Круглосуточный доступ', 'Отопление', 'Кухня', 'Кондиционер', 
@@ -349,24 +349,24 @@ CREATE TABLE flats (
 	FOREIGN KEY (location_id) REFERENCES city(id)
 );
 
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('1', '3', '1', '4400', 'Cosy white room', 'Cosy white room with a bathroom', '2', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('2', '1', '2', '4962', 'Beautiful flat in the centre', 'Beautiful flat in the centre in a walking distance from Hermitage', '5', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('3', '2', '3', '4400', 'A little Harry Potter room', 'Suitable for two', '2', 'registred');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('4', '1', '5', '4403', 'The Big loft', 'Great modern loft', '5', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('5', '4', '8', '4962', 'Small house', 'A small house for a family', '5', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('6', '5', '10', '4401', 'A parking place', 'Can be used for camping', '1', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('7', '2', '13', '4400', '2-roomed flat', 'A nice located flat with a fireplace', '4', 'approved'),
 	('8', '3', '14', '4403', 'Simple room', 'For one guest', '1', 'approved'),
 	('9', '2', '16', '4404', '3-roomed flat', 'For warm companies', '8', 'registred'),
 	('10', '1', '18', '4405', 'A hotel room', 'Gjhkh akfhkjhkh jdghlj', '1', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, decription, max_guests, status) VALUES 
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
 	('11', '3', '1', '4400', 'Cosy blue room', 'Cosy blue room with a bathroom', '2', 'approved');
 
 UPDATE flats SET status='registred' WHERE id=5;
@@ -510,7 +510,7 @@ CREATE TABLE reservations (
 	flat_id BIGINT UNSIGNED NOT NULL,
 	arrival_date DATE,
 	departure_date DATE,
-	status ENUM ('reserved', 'cancelled', 'visited', 'not_visited'),
+	status ENUM ('requested', 'reserved', 'cancelled', 'visited', 'not_visited'),
 	reserved_at DATETIME DEFAULT NOW(),
 	FOREIGN KEY (guest_id) REFERENCES guests(id),
 	FOREIGN KEY (flat_id) REFERENCES flats(id)
@@ -586,16 +586,16 @@ CREATE OR REPLACE VIEW calendar AS
       	HAVING `dayOfYear` < DAYOFYEAR(NOW()) 
   		) AS `d`;
   		
--- выборка данных по квартире с фото и типом:
-SELECT * FROM flats
-    JOIN 
-    photo ON flats.id = photo.flat_id
-    JOIN 
-    flat_types ON flats.flat_type_id = flat_types.id
-WHERE flats.id = 1;
+-- выборка данных по квартирам с фото и типом:
+CREATE OR REPLACE VIEW flat_info AS 	
+  	SELECT c.name AS city, ft.name AS type, f.flatname, f.description, f.max_guests, p.filename AS photo FROM 
+  	flats f
+    JOIN photo p ON f.id = p.flat_id
+    JOIN flat_types ft ON f.flat_type_id = ft.id
+    JOIN city c ON f.location_id = c.id;
 
 -- посмотреть все отзывы, начиная с наивысших
-SELECT fr.mark, fr.body AS reference, f.flatname, f.decription 
+SELECT fr.mark, fr.body AS reference, f.flatname, f.description 
 	FROM flat_references AS fr JOIN flats AS f
 	ON f.id = fr.flat_id
 	ORDER BY mark DESC;
@@ -610,7 +610,7 @@ GROUP BY c.id
 ORDER BY count(*) DESC;
 
 -- найти все квартиры в Москве
-SELECT flatname, decription FROM flats f JOIN city c on f.location_id = c.id
+SELECT flatname, description FROM flats f JOIN city c on f.location_id = c.id
 	WHERE c.name='Москва';
 
 -- найти самого частого гостя для квартиры
@@ -636,7 +636,7 @@ SELECT firstname, lastname, COUNT(*) AS flat_count FROM owners
   ORDER BY flat_count DESC;
 
 -- найти свободные квартиры на конкретную дату (как сделать, чтобы строки не дублировались?)
-SELECT f.flatname, f.decription, r.status FROM reservations r LEFT JOIN flats f ON r.flat_id = f.id
+SELECT f.flatname, f.description, r.status FROM reservations r LEFT JOIN flats f ON r.flat_id = f.id
 	WHERE ('2019-11-11' NOT BETWEEN r.arrival_date AND r.departure_date) OR r.status='cancelled';
 
 -- выбрать всех гостей, которые посетили квартиру
@@ -659,12 +659,56 @@ SELECT f.id, f.flatname,
 SELECT r.id, r.guest_id, r.flat_id, r.status, p.money_for_flat, p.transferring_status 
 	FROM reservations r JOIN payments p ON p.reservation_id=r.id;
 
+-- заезды по месяцам
+SELECT COUNT(id) AS month_reservations, MONTHNAME(arrival_date) AS month_name
+	FROM reservations
+	GROUP BY month_name
+	ORDER BY month_reservations DESC; 
 
+-- не давать менять статус на зарезервированный или посещенный до получения оплаты
+DROP TRIGGER IF EXISTS reservation_status_ins;
 DELIMITER //
-DROP FUNCTION IF EXISTS free_flats
-CREATE FUNCTION free_flats(a_date)
-RETURNS VARCHAR NOT DETERMINISTIC
+CREATE TRIGGER reservation_status_ins BEFORE INSERT ON reservations 
+FOR EACH ROW
 BEGIN
-	WHERE a_date NOT BETWEEN arrival_date AND departure_date
+	IF NEW.status='reserved' OR NEW.status='visited' OR NEW.status='not_visited' THEN
+	SIGNAL SQLSTATE '45000'
+	SET MESSAGE_TEXT = 'The status will be changed after the accepted payment';
+	END IF;
+END //
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS reservation_status_upd;
+DELIMITER //
+CREATE TRIGGER reservation_status_upd BEFORE UPDATE ON reservations 
+FOR EACH ROW
+BEGIN
+	IF NEW.status='reserved' OR NEW.status='visited' OR NEW.status='not_visited' THEN
+	SIGNAL SQLSTATE '45000'
+	SET MESSAGE_TEXT = 'The status will be changed after the accepted payment';
+	END IF;
+END //
+DELIMITER ;
+
+-- автоизменение статуса после получения оплаты
+DROP TRIGGER IF EXISTS reservation_status_paid_ins;
+DELIMITER //
+CREATE TRIGGER reservation_status_paid_ins AFTER INSERT ON payments
+FOR EACH ROW
+BEGIN
+	IF NEW.transferring_status='accepted' THEN
+	UPDATE reservations SET status='reserved' WHERE reservations.id=payments.reservation_id;
+	END IF;
+END //
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS reservation_status_paid_upd;
+DELIMITER //
+CREATE TRIGGER reservation_status_paid_upd AFTER INSERT ON payments
+FOR EACH ROW
+BEGIN
+	IF NEW.transferring_status='accepted' THEN
+	UPDATE reservations SET status='reserved' WHERE reservations.id=payments.reservation_id;
+	END IF;
 END //
 DELIMITER ;
