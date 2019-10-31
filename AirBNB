@@ -349,25 +349,25 @@ CREATE TABLE flats (
 	FOREIGN KEY (location_id) REFERENCES city(id)
 );
 
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('1', '3', '1', '4400', 'Cosy white room', 'Cosy white room with a bathroom', '2', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('2', '1', '2', '4962', 'Beautiful flat in the centre', 'Beautiful flat in the centre in a walking distance from Hermitage', '5', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('3', '2', '3', '4400', 'A little Harry Potter room', 'Suitable for two', '2', 'registred');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('4', '1', '5', '4403', 'The Big loft', 'Great modern loft', '5', 'approved');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('5', '4', '8', '4962', 'Small house', 'A small house for a family', '5', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('6', '5', '10', '4401', 'A parking place', 'Can be used for camping', '1', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('7', '2', '13', '4400', '2-roomed flat', 'A nice located flat with a fireplace', '4', 'approved'),
-	('8', '3', '14', '4403', 'Simple room', 'For one guest', '1', 'approved'),
-	('9', '2', '16', '4404', '3-roomed flat', 'For warm companies', '8', 'registred'),
-	('10', '1', '18', '4405', 'A hotel room', 'Gjhkh akfhkjhkh jdghlj', '1', 'deleted');
-INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status) VALUES 
-	('11', '3', '1', '4400', 'Cosy blue room', 'Cosy blue room with a bathroom', '2', 'approved');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('1', '3', '1', '4400', 'Cosy white room', 'Cosy white room with a bathroom', '2', 'approved', 'Wi-Fi');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('2', '1', '2', '4962', 'Beautiful flat in the centre', 'Beautiful flat in the centre in a walking distance from Hermitage', '5', 'approved', 'Бесплатная парковка');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('3', '2', '3', '4400', 'A little Harry Potter room', 'Suitable for two', '2', 'registred', 'Отопление');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('4', '1', '5', '4403', 'The Big loft', 'Great modern loft', '5', 'approved', 'Кухня');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('5', '4', '8', '4962', 'Small house', 'A small house for a family', '5', 'deleted', 'Предметы первой необходимости');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('6', '5', '10', '4401', 'A parking place', 'Can be used for camping', '1', 'deleted', 'Круглосуточный доступ');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('7', '2', '13', '4400', '2-roomed flat', 'A nice located flat with a fireplace', '4', 'approved', 'Wi-Fi'),
+	('8', '3', '14', '4403', 'Simple room', 'For one guest', '1', 'approved', 'Предметы первой необходимости'),
+	('9', '2', '16', '4404', '3-roomed flat', 'For warm companies', '8', 'registred', 'Кухня'),
+	('10', '1', '18', '4405', 'A hotel room', 'Gjhkh akfhkjhkh jdghlj', '1', 'deleted', 'Wi-Fi');
+INSERT INTO flats (id, flat_type_id, owner_id, location_id, flatname, description, max_guests, status, advantages) VALUES 
+	('11', '3', '1', '4400', 'Cosy blue room', 'Cosy blue room with a bathroom', '2', 'approved', 'Телевизор');
 
 UPDATE flats SET status='registred' WHERE id=5;
 
